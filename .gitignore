@@ -1,3 +1,7 @@
+#Test folders
+destination/*
+source/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
