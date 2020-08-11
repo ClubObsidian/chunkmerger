@@ -10,4 +10,14 @@ This is written by using the nbt code from the [minecraft region fixer](https://
 This code was tweaked to work with chunkmerger, imports were changed to load in from the current directory
 and `get_chunk` returns `None` if a chunk does not exist.
 
+## Running
+
+Put files that you want to merge into the other world in the `source` folder.
+
+Put files that you want to merge into in the `destination` folder.
+
+Run by using `merger.py`, you will need Python 3.
+
+## Warning
+
 Run at your own risk and make sure to have backups.
