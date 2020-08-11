@@ -9,3 +9,5 @@ be worlds with the same world seed.
 This is written by using the nbt code from the [minecraft region fixer](https://github.com/Fenixin/Minecraft-Region-Fixer).
 This code was tweaked to work with chunkmerger, imports were changed to load in from the current directory
 and `get_chunk` returns `None` if a chunk does not exist.
+
+Run at your own risk and make sure to have backups.
