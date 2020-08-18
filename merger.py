@@ -4,37 +4,37 @@ import os
 import shutil
 from region import RegionFile
 
-def isValidWorldFolder(checkFolder):
-    if os.path.exists(checkFolder) == False or os.path.isfile(checkFolder):
+def is_valid_world_folder(check_folder):
+    if os.path.exists(check_folder) == False or os.path.isfile(check_folder):
         return False
     
-    regionFolder = checkFolder + '/region/'
-    if os.path.exists(regionFolder) and os.path.isfile(regionFolder) == False:
+    region_folder = check_folder + '/region/'
+    if os.path.exists(region_folder) and os.path.isfile(region_folder) == False:
         return True
 
     return False
 
-aParser = argparse.ArgumentParser()
+arg_parser = argparse.ArgumentParser()
 
-aParser.add_argument('-s', '--source', required=True, help='Source world folder')
-aParser.add_argument('-d', '--dest', required=True, help='Destination world folder')
+arg_parser.add_argument('-s', '--source', dest='source', required=True, help='Source world folder')
+arg_parser.add_argument('-d', '--destination', '--dest', dest='dest', required=True, help='Destination world folder')
 
-args = aParser.parse_args()
+args = arg_parser.parse_args()
 
-if isValidWorldFolder(args.source) == False:
+if not is_valid_world_folder(args.source):
     print(args.source + ' is not a valid world folder!')
     exit()
 
-if isValidWorldFolder(args.dest) == False:
+if not is_valid_world_folder(args.dest):
     print(args.dest + ' is not a valid world folder!')
     exit()
 
-sourceRegionFolder = args.source + "/region/"
-destRegionFolder = args.dest + "/region/"
+source_region_folder = args.source + "/region/"
+dest_region_folder = args.dest + "/region/"
 
-for file in os.listdir(sourceRegionFolder):
-	source_file_name = sourceRegionFolder + file
-	destination_file_name = destRegionFolder + file
+for file in os.listdir(source_region_folder):
+	source_file_name = source_region_folder + file
+	destination_file_name = dest_region_folder + file
 	file_exists = os.path.isfile(destination_file_name)
 	if not file_exists:
 		shutil.copyfile(source_file_name, destination_file_name)
