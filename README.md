@@ -12,11 +12,11 @@ and `get_chunk` returns `None` if a chunk does not exist.
 
 ## Running
 
-Put files that you want to merge into the other world in the `source` folder.
+Put files that you want to merge into the other world in the `sourceworldname/region` folder.
 
-Put files that you want to merge into in the `destination` folder.
+Put files that you want to merge into in the `destinationworldname/region` folder.
 
-Run by using `merger.py`, you will need Python 3.
+Run by using `merger.py -s sourcefolder -d destinationfolder`, you will need Python 3.
 
 ## Warning
 
