@@ -1,5 +1,6 @@
 # chunkmerger
 
+[![Build](https://github.com/ClubObsidian/chunkmerger/workflows/Build/badge.svg)](https://github.com/ClubObsidian/chunkmerger/actions)
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0.html)
 
 Merges chunks from two different worlds into the same world. This is done by copying region files
