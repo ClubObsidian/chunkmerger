@@ -21,11 +21,11 @@ aParser.add_argument('-d', '--dest', required=True, help='Destination world fold
 
 args = aParser.parse_args()
 
-if isValidWorldFolder(args.source):
+if isValidWorldFolder(args.source) == False:
     print(args.source + ' is not a valid world folder!')
     exit()
 
-if isValidWorldFolder(args.dest):
+if isValidWorldFolder(args.dest) == False:
     print(args.dest + ' is not a valid world folder!')
     exit()
 
