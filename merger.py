@@ -18,8 +18,11 @@ arg_parser = argparse.ArgumentParser()
 
 arg_parser.add_argument('-s', '--source', dest='source', required=True, help='Source world folder')
 arg_parser.add_argument('-d', '--destination', '--dest', dest='dest', required=True, help='Destination world folder')
+arg_parser.add_argument('-v', '--verbose', dest='verbose', action='store_true', help='Displays verbose debugging messages')
+arg_parser.set_defaults(verbose=False)
 
 args = arg_parser.parse_args()
+verbose_logs = args.verbose
 
 if not is_valid_world_folder(args.source):
 	print(args.source + ' is not a valid world folder!')
@@ -28,6 +31,7 @@ if not is_valid_world_folder(args.source):
 if not is_valid_world_folder(args.dest):
 	print(args.dest + ' is not a valid world folder!')
 	exit()
+
 
 source_region_folder = args.source + "/region/"
 dest_region_folder = args.dest + "/region/"
@@ -39,8 +43,8 @@ for file in os.listdir(source_region_folder):
 	destination_file_name = dest_region_folder + file
 	file_exists = os.path.isfile(destination_file_name)
 	if not file_exists:
+		print('Destination "' + destination_file_name + '" did not exist, copying...')
 		shutil.copyfile(source_file_name, destination_file_name)
-		print('Destination ' + destination_file_name + ' did not exist, copying...')
 		continue
 
 	try:
@@ -53,8 +57,9 @@ for file in os.listdir(source_region_folder):
 				if source_chunk is not None:
 					destination_chunk = destination.get_chunk(x, z)
 					if destination_chunk is None:
-						print('Write ' + str(x) + ',' + str(z))
 						destination.write_chunk(x, z, source_chunk)
+						if verbose_logs:
+							print('Write ' + str(x) + ',' + str(z))
 	except Exception as e:
 		print("Couldn't merge to " + destination_file_name)
 		print(e)
